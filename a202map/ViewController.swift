@@ -20,8 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
+
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -73,6 +72,17 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func mapLongPress(_ sender: UILongPressGestureRecognizer) {
+        print("Long Press")
+        
+        let touchPoint = sender.location(in: myMapView)
+        let location = myMapView.convert(touchPoint, toCoordinateFrom: myMapView)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "自選點"
+        self.myMapView.addAnnotation(annotation)
+        
+    }
     
     
 }
