@@ -13,10 +13,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myMapView.isScrollEnabled = false
         // Do any additional setup after loading the view.
     }
-
-
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -35,9 +36,23 @@ class ViewController: UIViewController {
             let region:MKCoordinateRegion =
             MKCoordinateRegion.init(center: location, span: span)
             self.myMapView.setRegion(region, animated: true)
+            
+
         }
         
-
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            let latitude:CLLocationDegrees = 25.0444032
+            let longitude:CLLocationDegrees = 121.5141468
+            let location:CLLocationCoordinate2D =
+            CLLocationCoordinate2DMake(latitude, longitude)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = "譯智"
+            annotation.subtitle = "教育訓練中心"
+            self.myMapView.addAnnotation(annotation)
+        }
+        
     }
     
     @IBAction func setMapType(_ sender: UISegmentedControl) {
