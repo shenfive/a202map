@@ -19,6 +19,10 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let latitude:CLLocationDegrees = 25.0444032
             let longitude:CLLocationDegrees = 121.5141468
@@ -35,5 +39,26 @@ class ViewController: UIViewController {
         
 
     }
+    
+    @IBAction func setMapType(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex{
+        case 0:
+            
+            myMapView.mapType = .standard
+        case 1:
+            
+            myMapView.mapType = .satellite
+        case 2:
+            
+            myMapView.mapType = .hybrid
+        default:
+            break
+        }
+    }
+    
+    
+    
+    
 }
 
