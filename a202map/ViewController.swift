@@ -32,6 +32,7 @@ class ViewController: UIViewController {
             MKCoordinateRegion.init(center: location, span: span)
             self.myMapView.setRegion(region, animated: true)
         }
+        
 
     }
 }
